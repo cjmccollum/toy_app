@@ -12,18 +12,12 @@ the 504 barcodes of every filled shelf or an empty string '' if the shelf is emp
 
    "id": "XYZ123456789",
 
-0. **The python app automatically grabs the new csv and parses**
+0. **GBG makes a patch request to Titan to update the locations**
 
-   The Python app parses the csv data into a json format.
-
-0. **The python app makes an api request to Titan to update the locations**
-
-   Within Titan, the 96 tube rack is considered a `Location` and the
-   tubes are considered `Container`s.  First the rack location `id` needs to be
-   retrieved via an api call:
-
+   Within Titan, the cytomat is considered a `Location` and each shelf is considered a 
+   `child_location`. 
    ```
-   GET https://api.notablelabs.com/v1/barcodes/XYZ123456789
+   PATCH https://api.notablelabs.com/v1/locations/XYZ123456789
 
    =>
 
